@@ -1,0 +1,17 @@
+syntax = "proto3";
+package grpcchat;
+
+option go_package = "./gen";
+
+import "google/protobuf/timestamp.proto";
+
+message ClientMessage {
+    string username = 1;
+    string text = 2;
+}
+
+message Server {
+    string from = 1;
+    string text = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
