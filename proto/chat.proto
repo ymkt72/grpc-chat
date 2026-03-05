@@ -7,6 +7,7 @@ import "google/protobuf/timestamp.proto";
 
 // クライアントからメッセージを受け取り、サーバーからメッセージを返す
 service ChatService {
+    // クライアントからメッセージを受け取りメッセージを返すrpc
   rpc Chat(ClientMessage) returns (ServerMessage);
 }
 
