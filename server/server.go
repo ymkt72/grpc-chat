@@ -16,11 +16,10 @@ func (c *ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessa
 	return &serverMessage, nil
 }
 
-func Message() (*gen.ServerMessage, error) {
+func Message(message *gen.ClientMessage) (*gen.ServerMessage, error) {
 	s := ChatServer{}
 	var ctx context.Context
-	clientMessage := gen.ClientMessage{Username: "test", Text: "hello"}
-	serverMessage, err := s.Chat(ctx, &clientMessage)
+	serverMessage, err := s.Chat(ctx, message)
 	if err != nil {
 		return nil, err
 	}
