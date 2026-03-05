@@ -74,7 +74,7 @@ func (x *ClientMessage) GetText() string {
 	return ""
 }
 
-type Server struct {
+type ServerMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	From          string                 `protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
 	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
@@ -83,20 +83,20 @@ type Server struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Server) Reset() {
-	*x = Server{}
+func (x *ServerMessage) Reset() {
+	*x = ServerMessage{}
 	mi := &file_proto_chat_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Server) String() string {
+func (x *ServerMessage) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Server) ProtoMessage() {}
+func (*ServerMessage) ProtoMessage() {}
 
-func (x *Server) ProtoReflect() protoreflect.Message {
+func (x *ServerMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_chat_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -108,26 +108,26 @@ func (x *Server) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Server.ProtoReflect.Descriptor instead.
-func (*Server) Descriptor() ([]byte, []int) {
+// Deprecated: Use ServerMessage.ProtoReflect.Descriptor instead.
+func (*ServerMessage) Descriptor() ([]byte, []int) {
 	return file_proto_chat_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Server) GetFrom() string {
+func (x *ServerMessage) GetFrom() string {
 	if x != nil {
 		return x.From
 	}
 	return ""
 }
 
-func (x *Server) GetText() string {
+func (x *ServerMessage) GetText() string {
 	if x != nil {
 		return x.Text
 	}
 	return ""
 }
 
-func (x *Server) GetTimestamp() *timestamppb.Timestamp {
+func (x *ServerMessage) GetTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamp
 	}
@@ -141,8 +141,8 @@ const file_proto_chat_proto_rawDesc = "" +
 	"\x10proto/chat.proto\x12\bgrpcchat\x1a\x1fgoogle/protobuf/timestamp.proto\"?\n" +
 	"\rClientMessage\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x12\n" +
-	"\x04text\x18\x02 \x01(\tR\x04text\"j\n" +
-	"\x06Server\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\"q\n" +
+	"\rServerMessage\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x12\n" +
 	"\x04text\x18\x02 \x01(\tR\x04text\x128\n" +
 	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampB\aZ\x05./genb\x06proto3"
@@ -162,11 +162,11 @@ func file_proto_chat_proto_rawDescGZIP() []byte {
 var file_proto_chat_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_chat_proto_goTypes = []any{
 	(*ClientMessage)(nil),         // 0: grpcchat.ClientMessage
-	(*Server)(nil),                // 1: grpcchat.Server
+	(*ServerMessage)(nil),         // 1: grpcchat.ServerMessage
 	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_proto_chat_proto_depIdxs = []int32{
-	2, // 0: grpcchat.Server.timestamp:type_name -> google.protobuf.Timestamp
+	2, // 0: grpcchat.ServerMessage.timestamp:type_name -> google.protobuf.Timestamp
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
