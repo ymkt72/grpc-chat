@@ -5,8 +5,7 @@ import (
 	"grpcchat/gen/gen"
 )
 
-type ChatServer struct {
-}
+type ChatServer struct{}
 
 func (c *ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessage, error) {
 	serverMessage := gen.ServerMessage{
