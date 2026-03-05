@@ -145,7 +145,9 @@ const file_proto_chat_proto_rawDesc = "" +
 	"\rServerMessage\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x12\n" +
 	"\x04text\x18\x02 \x01(\tR\x04text\x128\n" +
-	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampB\aZ\x05./genb\x06proto3"
+	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp2G\n" +
+	"\vChatService\x128\n" +
+	"\x04Chat\x12\x17.grpcchat.ClientMessage\x1a\x17.grpcchat.ServerMessageB\aZ\x05./genb\x06proto3"
 
 var (
 	file_proto_chat_proto_rawDescOnce sync.Once
@@ -167,8 +169,10 @@ var file_proto_chat_proto_goTypes = []any{
 }
 var file_proto_chat_proto_depIdxs = []int32{
 	2, // 0: grpcchat.ServerMessage.timestamp:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	0, // 1: grpcchat.ChatService.Chat:input_type -> grpcchat.ClientMessage
+	1, // 2: grpcchat.ChatService.Chat:output_type -> grpcchat.ServerMessage
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -187,7 +191,7 @@ func file_proto_chat_proto_init() {
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_proto_chat_proto_goTypes,
 		DependencyIndexes: file_proto_chat_proto_depIdxs,

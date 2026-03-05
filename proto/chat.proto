@@ -5,6 +5,11 @@ option go_package = "./gen";
 
 import "google/protobuf/timestamp.proto";
 
+// クライアントからメッセージを受け取り、サーバーからメッセージを返す
+service ChatService {
+  rpc Chat(ClientMessage) returns (ServerMessage);
+}
+
 message ClientMessage {
     string username = 1;
     string text = 2;
