@@ -1,9 +1,8 @@
-package main
+package server
 
 import (
 	"context"
 	"grpcchat/gen/gen"
-	"log"
 )
 
 type ChatServer struct {
@@ -18,13 +17,13 @@ func (c *ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessa
 	return &serverMessage, nil
 }
 
-func main() {
+func Message() (*gen.ServerMessage, error) {
 	s := ChatServer{}
 	var ctx context.Context
 	clientMessage := gen.ClientMessage{Username: "test", Text: "hello"}
 	serverMessage, err := s.Chat(ctx, &clientMessage)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	println(serverMessage.Text)
+	return serverMessage, nil
 }
