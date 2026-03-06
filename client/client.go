@@ -8,10 +8,17 @@ import (
 
 func Message() *gen.ClientMessage {
 	scanner := bufio.NewScanner(os.Stdin)
-	var message string
+	var input string
 	for scanner.Scan() {
-		message = scanner.Text()
+		input = scanner.Text()
+		break
 	}
-	println(message)
-	return nil
+	var clientMessage gen.ClientMessage
+	if input != "" {
+		clientMessage = gen.ClientMessage{
+			Username: "test",
+			Text:     input,
+		}
+	}
+	return &clientMessage
 }
