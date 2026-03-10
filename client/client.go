@@ -14,11 +14,13 @@ func Message() *gen.ClientMessage {
 		break
 	}
 	var clientMessage gen.ClientMessage
-	if input != "" {
-		clientMessage = gen.ClientMessage{
-			Username: "test",
-			Text:     input,
-		}
+	if input == "" {
+		return nil
+	}
+
+	clientMessage = gen.ClientMessage{
+		Username: "test",
+		Text:     input,
 	}
 	return &clientMessage
 }
