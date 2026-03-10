@@ -1,13 +1,19 @@
-package server
+package main
 
 import (
 	"context"
 	"grpcchat/gen/gen"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
 )
 
-type ChatServer struct{}
+type ChatServer struct {
+	gen.UnimplementedChatServiceServer
+}
 
-func (c *ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessage, error) {
+func (c ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessage, error) {
 	serverMessage := gen.ServerMessage{
 		From:      "userA",
 		Text:      "you are dumb!",
@@ -16,12 +22,17 @@ func (c *ChatServer) Chat(context.Context, *gen.ClientMessage) (*gen.ServerMessa
 	return &serverMessage, nil
 }
 
-func Message(message *gen.ClientMessage) (*gen.ServerMessage, error) {
-	s := ChatServer{}
-	var ctx context.Context
-	serverMessage, err := s.Chat(ctx, message)
+func newServer() ChatServer {
+	return ChatServer{}
+}
+
+func main() {
+	lis, err := net.Listen("tcp", "localhost:8080")
 	if err != nil {
-		return nil, err
+		log.Fatal(err)
 	}
-	return serverMessage, nil
+	grpcServer := grpc.NewServer()
+	gen.RegisterChatServiceServer(grpcServer, newServer())
+
+	grpcServer.Serve(lis)
 }
