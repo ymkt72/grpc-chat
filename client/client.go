@@ -1,26 +1,19 @@
-package client
+package main
 
 import (
-	"bufio"
 	"grpcchat/gen/gen"
-	"os"
+	"log"
+
+	"google.golang.org/grpc"
 )
 
-func Message() *gen.ClientMessage {
-	scanner := bufio.NewScanner(os.Stdin)
-	var input string
-	for scanner.Scan() {
-		input = scanner.Text()
-		break
-	}
-	var clientMessage gen.ClientMessage
-	if input == "" {
-		return nil
-	}
+var client gen.ChatServiceClient
 
-	clientMessage = gen.ClientMessage{
-		Username: "test",
-		Text:     input,
+func main() {
+	conn, err := grpc.NewClient("localhost:8080")
+	if err != nil {
+		log.Fatal(err)
 	}
-	return &clientMessage
+	defer conn.Close()
+	client = gen.NewChatServiceClient(conn)
 }
